@@ -22,4 +22,13 @@ describe("fizzbuzz", () => {
     //then
     expect(result).toEqual(["0", "1"]);
   });
+  it("should return fizz when is multiple of 3", () => {
+    const inputNumber = 3;
+
+    //when
+    const result = fizzbuzz(inputNumber);
+
+    //then
+    expect(result).toEqual(["0", "1", "2", "fizz"]);
+  });
 });
