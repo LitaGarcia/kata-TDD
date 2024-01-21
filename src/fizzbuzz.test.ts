@@ -12,4 +12,14 @@ describe("fizzbuzz", () => {
     //then
     expect(result).toEqual(["0"]);
   });
+  it("should return a 1 inside a string list when input is 1", () => {
+    //given
+    const inputNumber = 1;
+
+    //when
+    const result = fizzbuzz(inputNumber);
+
+    //then
+    expect(result).toEqual(["0", "1"]);
+  });
 });
