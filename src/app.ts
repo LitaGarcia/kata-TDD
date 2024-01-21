@@ -1,3 +1,9 @@
-export function sum(a, b) {
-    return a + b;
+export function isSquare(a: number) {
+
+    const square = Math.sqrt(a);
+    if (isNaN(square)) {
+        return false
+    }
+    return Number.isInteger(square);
+
 }

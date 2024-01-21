@@ -1,8 +1,16 @@
 import {describe, expect, test} from '@jest/globals';
-import {sum} from './app.ts';
+import {isSquare} from './app.ts';
 
-describe('sum module', () => {
-    test('adds 1 + 2 to equal 3', () => {
-        expect(sum(1, 2)).toBe(3);
-    });
+type SquareNumbers = [numberA: number, result: boolean];
+describe('isSquare', () => {
+    it.each<SquareNumbers>([
+        [0, true],
+        [4, true],
+        [25, true],
+        [-1, false],
+        [3, false],
+        [26, false]
+    ])('should define is the number is a square or not', (n: number, result: boolean) => {
+        expect(isSquare(n)).toBe(result)
+    })
 });
