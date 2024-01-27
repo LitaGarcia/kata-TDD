@@ -31,4 +31,13 @@ describe("fizzbuzz", () => {
     //then
     expect(result).toEqual(["0", "1", "2", "fizz"]);
   });
+  it("should return buzz when is multiple of 5", () => {
+    const inputNumber = 5;
+
+    //when
+    const result = fizzbuzz(inputNumber);
+
+    //then
+    expect(result).toEqual(["0", "1", "2", "fizz", "4", "buzz"]);
+  });
 });
