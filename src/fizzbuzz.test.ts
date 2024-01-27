@@ -1,72 +1,37 @@
 import { describe } from "@jest/globals";
 import { fizzbuzz } from "./fizzbuzz.ts";
 
+const listNumbers = [
+  "0",
+  "1",
+  "2",
+  "fizz",
+  "4",
+  "buzz",
+  "fizz",
+  "7",
+  "8",
+  "fizz",
+  "buzz",
+  "11",
+  "fizz",
+  "13",
+  "14",
+  "fizzbuzz",
+];
 describe("fizzbuzz", () => {
-  it("should return a 0 inside a string list when input is 0", () => {
-    //given
-    const inputNumber: number = 0;
-
-    //when
-    const result: string[] = fizzbuzz(inputNumber);
-
-    //then
-    expect(result).toEqual(["0"]);
-  });
-  it("should return a 1 inside a string list when input is 1", () => {
-    //given
-    const inputNumber: number = 1;
-
-    //when
-    const result: string[] = fizzbuzz(inputNumber);
-
-    //then
-    expect(result).toEqual(["0", "1"]);
-  });
-  it("should return fizz when is multiple of 3", () => {
-    //given
-    const inputNumber: number = 3;
-
-    //when
-    const result: string[] = fizzbuzz(inputNumber);
-
-    //then
-    expect(result).toEqual(["0", "1", "2", "fizz"]);
-  });
-  it("should return buzz when is multiple of 5", () => {
-    //given
-    const inputNumber: number = 5;
-
-    //when
-    const result: string[] = fizzbuzz(inputNumber);
-
-    //then
-    expect(result).toEqual(["0", "1", "2", "fizz", "4", "buzz"]);
-  });
-  it("should return fizzbuzz when is multiple of 5 and 3", () => {
-    //given
-    const inputNumber: number = 15;
-
-    //when
-    const result: string[] = fizzbuzz(inputNumber);
-
-    //then
-    expect(result).toEqual([
-      "0",
-      "1",
-      "2",
-      "fizz",
-      "4",
-      "buzz",
-      "fizz",
-      "7",
-      "8",
-      "fizz",
-      "buzz",
-      "11",
-      "fizz",
-      "13",
-      "14",
-      "fizzbuzz",
-    ]);
-  });
+  it.each<FizzBuzzDataSet>([
+    [0, ["0"]],
+    [1, ["0", "1"]],
+    [3, ["0", "1", "2", "fizz"]],
+    [5, ["0", "1", "2", "fizz", "4", "buzz"]],
+    [15, listNumbers],
+  ])(
+    "it should return a list whit fizz when a number is multiple of 3, buzz when is of 5 and fizzbuz when is of both",
+    (number: number, response: string[]) => {
+      expect(fizzbuzz(number)).toEqual(response);
+    },
+  );
 });
+
+type FizzBuzzDataSet = [number, string[]];
