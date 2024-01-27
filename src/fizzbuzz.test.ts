@@ -54,7 +54,7 @@ describe("fizzbuzz", () => {
       "fizz",
       "4",
       "buzz",
-      "6",
+      "fizz",
       "7",
       "8",
       "fizz",
